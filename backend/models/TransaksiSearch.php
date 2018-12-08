@@ -2,17 +2,18 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Transaksi;
 
 /**
- * TransaksiSearch represents the model behind the search form of `common\models\Transaksi`.
+ * TransaksiSearch represents the model behind the search form about `common\models\Transaksi`.
  */
 class TransaksiSearch extends Transaksi
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -22,7 +23,7 @@ class TransaksiSearch extends Transaksi
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function scenarios()
     {
@@ -41,8 +42,6 @@ class TransaksiSearch extends Transaksi
     {
         $query = Transaksi::find();
 
-        // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -55,7 +54,6 @@ class TransaksiSearch extends Transaksi
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'id_user' => $this->id_user,

@@ -47,4 +47,9 @@ return [
         */
     ],
     'params' => $params,
+    'modules' => [
+        'gridview' =>  [
+          'class' => '\kartik\grid\Module'
+        ]
+    ],
 ];

@@ -33,6 +33,6 @@ wow = new WOW(
 wow.init();
 
 //Script for Mixitup
-$(function(){
-	$('#portfolio-items').mixItUp();
-});
+// $(function(){
+// 	$('#portfolio-items').mixItUp();
+// });
