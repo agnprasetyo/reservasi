@@ -18,7 +18,7 @@ class RestoranSearch extends Restoran
     public function rules()
     {
         return [
-            [['id', 'kuota'], 'integer'],
+            [['id', 'kuota', 'id_user'], 'integer'],
             [['value', 'alamat'], 'safe'],
         ];
     }
@@ -58,6 +58,7 @@ class RestoranSearch extends Restoran
         $query->andFilterWhere([
             'id' => $this->id,
             'kuota' => $this->kuota,
+            'id_user' => $this->id_user,
         ]);
 
         $query->andFilterWhere(['like', 'value', $this->value])

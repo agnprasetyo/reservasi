@@ -11,6 +11,11 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
 AppAsset::register($this);
+
+$this->registerJsFile("@web/js/modernizr.custom.12691.js", [
+  'depends' => 'frontend\assets\AppAsset',
+  'position' => 1,
+]);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -22,20 +27,10 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="icon" href="img/fabicon.png">
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- Animate CSS -->
-    <link href="css/animate.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/v-1/main.css" rel="stylesheet">
-
-    <script src="js/modernizr.custom.12691.js"></script>
-
+    <?php $this->registerCsrfMetaTags() ?>
+    <?php $this->head() ?>
+    
+    <link rel="icon" href="<?php echo Yii::$app->homeUrl ?>img/fabicon.png">
 </head>
 
 <body id="page-top" class="index">

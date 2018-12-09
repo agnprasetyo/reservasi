@@ -19,6 +19,7 @@ class TransaksiSearch extends Transaksi
     {
         return [
             [['id', 'id_user', 'id_restoran', 'jumlah_reservasi', 'total_pembayaran'], 'integer'],
+            [['date', 'note'], 'safe'],
         ];
     }
 
@@ -59,8 +60,11 @@ class TransaksiSearch extends Transaksi
             'id_user' => $this->id_user,
             'id_restoran' => $this->id_restoran,
             'jumlah_reservasi' => $this->jumlah_reservasi,
+            'date' => $this->date,
             'total_pembayaran' => $this->total_pembayaran,
         ]);
+
+        $query->andFilterWhere(['like', 'note', $this->note]);
 
         return $dataProvider;
     }

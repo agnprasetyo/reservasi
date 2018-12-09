@@ -11,6 +11,7 @@ use Yii;
  * @property string $value
  * @property int $kuota
  * @property string $alamat
+ * @property int $id_user
  *
  * @property Transaksi $transaksi
  */
@@ -30,8 +31,8 @@ class Restoran extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['value', 'kuota', 'alamat'], 'required'],
-            [['kuota'], 'integer'],
+            [['value', 'kuota', 'alamat', 'id_user'], 'required'],
+            [['kuota', 'id_user'], 'integer'],
             [['value', 'alamat'], 'string', 'max' => 20],
         ];
     }
@@ -46,6 +47,7 @@ class Restoran extends \yii\db\ActiveRecord
             'value' => 'Value',
             'kuota' => 'Kuota',
             'alamat' => 'Alamat',
+            'id_user' => 'Id User',
         ];
     }
 

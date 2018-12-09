@@ -14,6 +14,7 @@ use yii\widgets\DetailView;
             'value',
             'kuota',
             'alamat',
+            'id_user',
         ],
     ]) ?>
 

@@ -28,8 +28,16 @@ return [
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'total_pembayaran',
+        'attribute'=>'date',
     ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'note',
+    ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'total_pembayaran',
+    // ],
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,

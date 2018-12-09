@@ -17,6 +17,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'jumlah_reservasi')->textInput() ?>
 
+    <?= $form->field($model, 'date')->textInput() ?>
+
+    <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
+
     <?= $form->field($model, 'total_pembayaran')->textInput() ?>
 
   

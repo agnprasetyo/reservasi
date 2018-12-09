@@ -11,6 +11,8 @@ use Yii;
  * @property int $id_user
  * @property int $id_restoran
  * @property int $jumlah_reservasi
+ * @property string $date
+ * @property string $note
  * @property int $total_pembayaran
  *
  * @property User $user
@@ -32,8 +34,10 @@ class Transaksi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'id_restoran', 'jumlah_reservasi', 'total_pembayaran'], 'required'],
+            [['id_user', 'id_restoran', 'jumlah_reservasi', 'date', 'note', 'total_pembayaran'], 'required'],
             [['id_user', 'id_restoran', 'jumlah_reservasi', 'total_pembayaran'], 'integer'],
+            [['date'], 'safe'],
+            [['note'], 'string'],
             [['id_user'], 'unique'],
             [['id_restoran'], 'unique'],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
@@ -51,6 +55,8 @@ class Transaksi extends \yii\db\ActiveRecord
             'id_user' => 'Id User',
             'id_restoran' => 'Id Restoran',
             'jumlah_reservasi' => 'Jumlah Reservasi',
+            'date' => 'Date',
+            'note' => 'Note',
             'total_pembayaran' => 'Total Pembayaran',
         ];
     }
