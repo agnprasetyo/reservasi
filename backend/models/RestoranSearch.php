@@ -2,18 +2,17 @@
 
 namespace backend\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Restoran;
 
 /**
- * RestoranSearch represents the model behind the search form about `common\models\Restoran`.
+ * RestoranSearch represents the model behind the search form of `common\models\Restoran`.
  */
 class RestoranSearch extends Restoran
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -24,7 +23,7 @@ class RestoranSearch extends Restoran
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function scenarios()
     {
@@ -43,6 +42,8 @@ class RestoranSearch extends Restoran
     {
         $query = Restoran::find();
 
+        // add conditions that should always apply here
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -55,6 +56,7 @@ class RestoranSearch extends Restoran
             return $dataProvider;
         }
 
+        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'kuota' => $this->kuota,

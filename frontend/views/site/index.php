@@ -16,8 +16,8 @@ $this->title = 'Reservasi Online';
           <span class="words-wrapper waiting">
             <b class="is-visible">Online</b>
             <b>Rumah Makan</b>
-            <b>Rumah Makan</b>
-            <b>Rumah Makan</b>
+            <!-- <b>Rumah Makan</b>
+            <b>Rumah Makan</b> -->
           </span>
         </h1>
         <a href="#services" class="page-scroll btn btn-xl">Explore Services</a>

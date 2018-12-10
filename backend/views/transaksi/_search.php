@@ -23,7 +23,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'jumlah_reservasi') ?>
 
-    <?= $form->field($model, 'total_pembayaran') ?>
+    <?= $form->field($model, 'date') ?>
+
+    <?php // echo $form->field($model, 'note') ?>
+
+    <?php // echo $form->field($model, 'total_pembayaran') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

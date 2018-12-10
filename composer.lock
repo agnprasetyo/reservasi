@@ -1442,12 +1442,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "ddd5658c487ff2dd4c6cbfdeeb46505962adb6c1"
+                "reference": "2b92f222a0981096cccd2c4320eb1e7bab7f985d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/ddd5658c487ff2dd4c6cbfdeeb46505962adb6c1",
-                "reference": "ddd5658c487ff2dd4c6cbfdeeb46505962adb6c1",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/2b92f222a0981096cccd2c4320eb1e7bab7f985d",
+                "reference": "2b92f222a0981096cccd2c4320eb1e7bab7f985d",
                 "shasum": ""
             },
             "require": {
@@ -1493,7 +1493,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2018-11-20T07:53:32+00:00"
+            "time": "2018-12-08T12:12:46+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -1715,12 +1715,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "111da4dee053c4f8cfa00e4e3738094eba6490d7"
+                "reference": "c02adc552bcf3a0ef6f3694a9dcbf209f4885ab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/111da4dee053c4f8cfa00e4e3738094eba6490d7",
-                "reference": "111da4dee053c4f8cfa00e4e3738094eba6490d7",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/c02adc552bcf3a0ef6f3694a9dcbf209f4885ab1",
+                "reference": "c02adc552bcf3a0ef6f3694a9dcbf209f4885ab1",
                 "shasum": ""
             },
             "require": {
@@ -1756,7 +1756,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2018-12-01T20:41:05+00:00"
+            "time": "2018-12-08T10:07:49+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -1961,7 +1961,7 @@
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "6.1.1",
+            "version": "6.5.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
@@ -3011,23 +3011,23 @@
         },
         {
             "name": "ralouphie/getallheaders",
-            "version": "2.0.5",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ralouphie/getallheaders.git",
-                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa"
+                "reference": "e47eb688e84643a6c5e7c0333535e07c3fb75ab8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
-                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/e47eb688e84643a6c5e7c0333535e07c3fb75ab8",
+                "reference": "e47eb688e84643a6c5e7c0333535e07c3fb75ab8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3"
+                "php": ">=5.6"
             },
             "require-dev": {
-                "phpunit/phpunit": "~3.7.0",
+                "phpunit/phpunit": "^5",
                 "satooshi/php-coveralls": ">=1.0"
             },
             "type": "library",
@@ -3047,7 +3047,7 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
-            "time": "2016-02-11T07:05:27+00:00"
+            "time": "2018-12-06T19:23:00+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
