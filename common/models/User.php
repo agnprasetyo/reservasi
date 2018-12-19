@@ -5,7 +5,6 @@ namespace common\models;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
@@ -18,45 +17,31 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token
  * @property string $email
  * @property int $status
- * @property string $peran
  * @property int $created_at
  * @property int $updated_at
  *
+ * @property AuthAssign[] $authAssigns
  * @property Transaksi $transaksi
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends UserModel implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return '{{%user}}';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-        ];
-    }
+//     /**
+//      * @return \yii\db\ActiveQuery
+//      */
+//     public function getAuthAssigns()
+//     {
+//         return $this->hasMany(AuthAssign::className(), ['id_user' => 'id']);
+//     }
+//
+//     /**
+//      * @return \yii\db\ActiveQuery
+//      */
+//     public function getTransaksi()
+//     {
+//         return $this->hasOne(Transaksi::className(), ['id_user' => 'id']);
+//     }
+// }
 
     /**
      * {@inheritdoc}

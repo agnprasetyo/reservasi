@@ -9,5 +9,8 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'assign' => [
+            'class' => 'common\components\Assign',
+        ]
     ],
 ];

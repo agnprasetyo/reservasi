@@ -1,19 +1,19 @@
 <?php
 
-namespace backend\controllers;
+namespace common\controllers;
 
 use Yii;
-use common\models\Transaksi;
-use backend\models\TransaksiSearch;
+use common\models\User;
+use backend\models\searchs\User as UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * TransaksiController implements the CRUD actions for Transaksi model.
+ * UserController implements the CRUD actions for User model.
  */
-class TransaksiController extends Controller
+class UserController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -25,7 +25,11 @@ class TransaksiController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'allow' => Yii::$app->assign->is(['administrator']),
+                        'actions' => ['set-assign'],
+                        'allow' => Yii::$app->assign->isBoth(),
+                    ],
+                    [
+                        'allow' => Yii::$app->assign->isAdministrator(),
                     ],
                 ],
             ],
@@ -39,58 +43,62 @@ class TransaksiController extends Controller
     }
 
     /**
-     * Lists all Transaksi models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TransaksiSearch();
+        $searchModel  = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Transaksi model.
+     * Displays a single User model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $model = Transaksi::find()
-               ->joinWith(['user'])
-               ->where(['transaksi.id' => $id])
-               ->one();
-
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Transaksi model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Transaksi();
+        $model = new User();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->setPassword($model->password_hash);
+            $model->generateAuthKey();
+
+            if ($model->save()) {
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         }
 
+        $model->password_hash = null;
         return $this->render('create', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Updates an existing Transaksi model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -100,17 +108,26 @@ class TransaksiController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->setPassword($model->password_hash);
+            $model->generateAuthKey();
+
+            if ($model->save()) {
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         }
 
+        $model->password_hash = null;
         return $this->render('update', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Deletes an existing Transaksi model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -118,21 +135,43 @@ class TransaksiController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+
+        if ($model->status == $model::STATUS_ACTIVE) {
+            $model->status = $model::STATUS_DELETED;
+        } else {
+            $model->status = $model::STATUS_ACTIVE;
+        }
+
+        $model->save(false);
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Transaksi model based on its primary key value.
+     *
+     */
+    public function actionSetAssign($assign)
+    {
+        if (Yii::$app->assign->setAssign($assign)) {
+            Yii::$app->session->setFlash('success', 'Hak Akses berhasil diubah.');
+        } else {
+            Yii::$app->session->setFlash('error', 'Hak Akses gagal diubah.');
+        }
+
+        return $this->goBack();
+    }
+
+    /**
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Transaksi the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Transaksi::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         }
 

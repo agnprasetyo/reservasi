@@ -1,19 +1,18 @@
 <?php
 
-namespace backend\controllers;
+namespace frontend\controllers;
 
 use Yii;
-use common\models\Transaksi;
-use backend\models\TransaksiSearch;
+use common\models\AuthAssign;
+use frontend\models\AuthAssignSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
- * TransaksiController implements the CRUD actions for Transaksi model.
+ * AuthAssignController implements the CRUD actions for AuthAssign model.
  */
-class TransaksiController extends Controller
+class AuthAssignController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -21,14 +20,6 @@ class TransaksiController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => Yii::$app->assign->is(['administrator']),
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -39,12 +30,12 @@ class TransaksiController extends Controller
     }
 
     /**
-     * Lists all Transaksi models.
+     * Lists all AuthAssign models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TransaksiSearch();
+        $searchModel = new AuthAssignSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -54,31 +45,26 @@ class TransaksiController extends Controller
     }
 
     /**
-     * Displays a single Transaksi model.
+     * Displays a single AuthAssign model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $model = Transaksi::find()
-               ->joinWith(['user'])
-               ->where(['transaksi.id' => $id])
-               ->one();
-
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Transaksi model.
+     * Creates a new AuthAssign model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Transaksi();
+        $model = new AuthAssign();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -90,7 +76,7 @@ class TransaksiController extends Controller
     }
 
     /**
-     * Updates an existing Transaksi model.
+     * Updates an existing AuthAssign model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -110,7 +96,7 @@ class TransaksiController extends Controller
     }
 
     /**
-     * Deletes an existing Transaksi model.
+     * Deletes an existing AuthAssign model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -124,15 +110,15 @@ class TransaksiController extends Controller
     }
 
     /**
-     * Finds the Transaksi model based on its primary key value.
+     * Finds the AuthAssign model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Transaksi the loaded model
+     * @return AuthAssign the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Transaksi::findOne($id)) !== null) {
+        if (($model = AuthAssign::findOne($id)) !== null) {
             return $model;
         }
 

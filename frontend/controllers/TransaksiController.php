@@ -1,14 +1,13 @@
 <?php
 
-namespace backend\controllers;
+namespace frontend\controllers;
 
 use Yii;
 use common\models\Transaksi;
-use backend\models\TransaksiSearch;
+use frontend\models\TransaksiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
  * TransaksiController implements the CRUD actions for Transaksi model.
@@ -21,14 +20,6 @@ class TransaksiController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => Yii::$app->assign->is(['administrator']),
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -62,10 +53,9 @@ class TransaksiController extends Controller
     public function actionView($id)
     {
         $model = Transaksi::find()
-               ->joinWith(['user'])
+               ->joinWith(['restoran'])
                ->where(['transaksi.id' => $id])
                ->one();
-
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

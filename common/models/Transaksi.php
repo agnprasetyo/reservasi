@@ -40,7 +40,6 @@ class Transaksi extends \yii\db\ActiveRecord
             [['note'], 'string'],
             [['id_user'], 'unique'],
             [['id_restoran'], 'unique'],
-            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
             [['id_restoran'], 'exist', 'skipOnError' => true, 'targetClass' => Restoran::className(), 'targetAttribute' => ['id_restoran' => 'id']],
         ];
     }
