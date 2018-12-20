@@ -46,55 +46,56 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php endforeach; ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            // 'id',
-            // 'id_user',
-            [
-                'attribute'=>'id_restoran',
-                'value' => 'restoran.value',
-            ],
-            // 'jumlah_reservasi',
-            // 'date',
-            //'note:ntext',
-            //'total_pembayaran',
-            // ['class' => 'yii\grid\ActionColumn'],
-
-            [
-              'class' => 'yii\grid\ActionColumn',
-              'header' => 'Actions',
-              'headerOptions' => ['style' => 'color:#337ab7'],
-              'template' => '{view}{create}',
-              'buttons' => [
-                'view' => function ($url, $model) {
-                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
-                                'title' => Yii::t('app', 'lead-view'),
-                    ]);
-                },
-                'create' => function ($url, $model) {
-                    return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                                'title' => Yii::t('app', 'lead-delete'),
-                    ]);
-                }
-
-              ],
-              'urlCreator' => function ($action, $model, $key, $index) {
-                if ($action === 'view') {
-                    $url ='index.php?r=transaksi/view&id='.$model->id;
-                    return $url;
-                }
-                if ($action === 'create') {
-                    $url ='index.php?r=transaksi/create';
-                    return $url;
-                }
-              }
-          ],
-
-        ],
-
-    ]); ?>
+    <?php
+    // GridView::widget([
+    //     'dataProvider' => $dataProvider,
+    //     'columns' => [
+    //         ['class' => 'yii\grid\SerialColumn'],
+    //
+    //         // 'id',
+    //         // 'id_user',
+    //         [
+    //             'attribute'=>'id_restoran',
+    //             'value' => 'restoran.value',
+    //         ],
+    //         // 'jumlah_reservasi',
+    //         // 'date',
+    //         //'note:ntext',
+    //         //'total_pembayaran',
+    //         // ['class' => 'yii\grid\ActionColumn'],
+    //
+    //         [
+    //           'class' => 'yii\grid\ActionColumn',
+    //           'header' => 'Actions',
+    //           'headerOptions' => ['style' => 'color:#337ab7'],
+    //           'template' => '{view}{create}',
+    //           'buttons' => [
+    //             'view' => function ($url, $model) {
+    //                 return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+    //                             'title' => Yii::t('app', 'lead-view'),
+    //                 ]);
+    //             },
+    //             'create' => function ($url, $model) {
+    //                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+    //                             'title' => Yii::t('app', 'lead-delete'),
+    //                 ]);
+    //             }
+    //
+    //           ],
+    //           'urlCreator' => function ($action, $model, $key, $index) {
+    //             if ($action === 'view') {
+    //                 $url ='index.php?r=transaksi/view&id='.$model->id;
+    //                 return $url;
+    //             }
+    //             if ($action === 'create') {
+    //                 $url ='index.php?r=transaksi/create';
+    //                 return $url;
+    //             }
+    //           }
+    //       ],
+    //
+    //     ],
+    //
+    // ]); ?>
 
 </div>

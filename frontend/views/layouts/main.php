@@ -43,7 +43,7 @@ $view->registerLinkTag(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' 
         // ['label' => 'About', 'url' => ['/site/about']],
         // ['label' => 'Contact', 'url' => ['/site/contact']],
         // ['label' => 'Restoran', 'url' => ['/transaksi/view']],
-        ['label' => 'Transaksi', 'url' => ['/transaksi']],
+        // ['label' => 'Transaksi', 'url' => ['/transaksi']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

@@ -51,11 +51,11 @@ class Transaksi extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_user' => 'Id User',
-            'id_restoran' => 'Id Restoran',
+            'id_user' => 'Username',
+            'id_restoran' => 'Restoran',
             'jumlah_reservasi' => 'Jumlah Reservasi',
-            'date' => 'Date',
-            'note' => 'Note',
+            'date' => 'Waktu Reservasi',
+            'note' => 'Keterangan',
             'total_pembayaran' => 'Total Pembayaran',
         ];
     }

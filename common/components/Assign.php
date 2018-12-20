@@ -35,6 +35,38 @@ class Assign extends Component
     /**
      *
      */
+    public function isAdministrator()
+    {
+        return $this->getAssign() == 'administrator';
+    }
+
+    /**
+     *
+     */
+    public function isPenjual()
+    {
+        return $this->getAssign() == 'penjual';
+    }
+
+    /**
+     *
+     */
+    public function isPembeli()
+    {
+        return $this->getAssign() == 'pembeli';
+    }
+
+    /**
+     *
+     */
+    public function isBoth()
+    {
+        return $this->isAdministrator() || $this->isPenjual() || $this->isPembeli();
+    }
+
+    /**
+     *
+     */
     public function is($assign)
     {
         if (is_array($assign)) {

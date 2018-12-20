@@ -73,6 +73,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->assign->isBoth()) {
+
+            return $this->redirect(['/transaksi/index']);
+        }
+
         return $this->render('index');
     }
 
@@ -89,6 +94,9 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+            Yii::$app->assign->setAssign();
+
             return $this->goBack();
         } else {
             $model->password = '';
