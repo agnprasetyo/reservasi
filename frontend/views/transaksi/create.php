@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Transaksi */
 
 $this->title = 'Create Transaksi';
-$this->params['breadcrumbs'][] = ['label' => 'Transaksis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Reservasi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="transaksi-create">

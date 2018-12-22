@@ -114,6 +114,24 @@ class TransaksiController extends Controller
     }
 
     /**
+     * Creates a new Transaksi model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    // public function actionCreate()
+    // {
+    //     $model = new Transaksi();
+    //
+    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    //         return $this->redirect(['view', 'id' => $model->id]);
+    //     }
+    //
+    //     return $this->render('create', [
+    //         'model' => $model,
+    //     ]);
+    // }
+
+    /**
      * Finds the Transaksi model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

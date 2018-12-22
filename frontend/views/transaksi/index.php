@@ -15,6 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
   <h3 align="center" >Rumah Makan Area UNS</h3>
 </div>
 
+<?php Html::a('Reservasi Saya', ['list'], ['class' => 'btn btn-success']) ?>
+
 <?php foreach ($dataProvider->getModels() as $key => $value): ?>
 
 <div class="panel panel-default">
@@ -28,11 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </td>
         <td style="vertical-align: middle; width: 5%;">
           <!-- <div class="btn-group-vertical"> -->
-              <?php echo  Html::a('Lihat', ['$url'], ['class'=> 'btn btn-default',
-                'title' => Yii::t('app', 'lead-view'),
+              <?php echo  Html::a('Lihat', ['create'], ['class'=> 'btn btn-success',
+                'title' => Yii::t('app', 'lead-create'),
               ]); ?>
               <br><br>
-              <?php echo  Html::a('Status', ['$url'], ['class'=> 'btn btn-default',
+              <?php echo  Html::a('Status', ['view'], ['class'=> 'btn btn-success',
                 'title' => Yii::t('app', 'lead-delete'),
               ]);
 

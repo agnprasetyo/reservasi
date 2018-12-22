@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             // 'id',
-            'id_user',
             [
                 'class'=>'\kartik\grid\DataColumn',
                 'attribute'=>'id_user',
@@ -36,10 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                   return $model['user']->username;
                 },
             ],
-
             [
                 'class'=>'\kartik\grid\DataColumn',
                 'attribute'=>'id_restoran',
+                'value' => function ($model) {
+                  return $model['restoran']->value;
+                },
             ],
             [
                 'class'=>'\kartik\grid\DataColumn',

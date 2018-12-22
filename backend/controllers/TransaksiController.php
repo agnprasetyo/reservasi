@@ -62,7 +62,7 @@ class TransaksiController extends Controller
     public function actionView($id)
     {
         $model = Transaksi::find()
-               ->joinWith(['user'])
+               ->joinWith(['user', 'restoran'])
                ->where(['transaksi.id' => $id])
                ->one();
 
