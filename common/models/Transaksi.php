@@ -14,7 +14,7 @@ use Yii;
  * @property string $date
  * @property string $note
  * @property int $total_pembayaran
- * @property int $status
+ * @property int $approve
  * @property string $nama
  *
  * @property User $user
@@ -22,6 +22,9 @@ use Yii;
  */
 class Transaksi extends \yii\db\ActiveRecord
 {
+    const STATUS_NOT_APPROVED = 0;
+    const STATUS_APPROVED     = 1;
+
     /**
      * {@inheritdoc}
      */
@@ -40,8 +43,6 @@ class Transaksi extends \yii\db\ActiveRecord
             [['id_user', 'id_restoran', 'jumlah_reservasi', 'total_pembayaran'], 'integer'],
             [['date'], 'safe'],
             [['note', 'nama'], 'string'],
-            [['id_user'], 'unique'],
-            [['id_restoran'], 'unique'],
             [['id_restoran'], 'exist', 'skipOnError' => true, 'targetClass' => Restoran::className(), 'targetAttribute' => ['id_restoran' => 'id']],
         ];
     }
@@ -60,7 +61,7 @@ class Transaksi extends \yii\db\ActiveRecord
             'date' => 'Waktu Reservasi',
             'note' => 'Keterangan',
             'total_pembayaran' => 'Total Pembayaran',
-            'status' => 'Status',
+            'approve' => 'Status',
         ];
     }
 

@@ -44,10 +44,10 @@ class Restoran extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'value' => 'Value',
+            'value' => 'Restoran',
             'kuota' => 'Kuota',
             'alamat' => 'Alamat',
-            'id_user' => 'Id User',
+            'id_user' => 'Username',
         ];
     }
 

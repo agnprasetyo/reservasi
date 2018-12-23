@@ -2,23 +2,22 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Transaksi */
 /* @var $form yii\widgets\ActiveForm */
+
+$params['restoran'] = ArrayHelper::map(\common\models\Restoran::find()->all(), 'id', 'value');
 ?>
 
 <div class="transaksi-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?php // $form->field($model, 'id_user')->textInput()  ->otomatis?>
-
-    <?= $form->field($model, 'nama')->textInput() ?>
+    
+    <?= $form->field($model, 'id_restoran')->dropDownList($params['restoran'], ['prompt' => 'Pilih restoran']) ?>
 
     <?= $form->field($model, 'jumlah_reservasi')->textInput() ?>
-
-    <?= $form->field($model, 'id_restoran')->textInput() ?>
 
     <?= $form->field($model, 'date')->textInput() ?>
 

@@ -42,8 +42,8 @@ $view->registerLinkTag(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' 
         ['label' => 'Home', 'url' => ['/site/index']],
         // ['label' => 'About', 'url' => ['/site/about']],
         // ['label' => 'Contact', 'url' => ['/site/contact']],
-        // ['label' => 'Restoran', 'url' => ['/transaksi/view']],
-        // ['label' => 'Transaksi', 'url' => ['/transaksi']],
+        // ['label' => 'Restoran', 'url' => ['/transaksi/list']],
+        ['label' => 'Penjual', 'url' => ['/penjual']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -76,9 +76,8 @@ $view->registerLinkTag(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' 
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; <?= date('Y') ?> <?= Html::a(Yii::$app->name, ['/']) ?></p>
+        <p class="pull-right">Manajemen Proyek <strong>Kelompok 5</strong></p>
     </div>
 </footer>
 
