@@ -11,33 +11,67 @@ $this->title = 'Rumah Makan Area UNS';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="card">
-  <h3 align="center" >Rumah Makan Area UNS</h3>
+<div>
+  <h1 align="center" >Rumah Makan Area UNS</h1>
 </div>
 
-<?php Html::a('Reservasi Saya', ['list'], ['class' => 'btn btn-success']) ?>
+<p class="pull-right">
+    <?= Html::a('Reservasi Saya', ['reservasi-saya'], ['class' => 'btn btn-primary']) ?>
+</p>
+<br><br><br>
 
 <?php foreach ($dataProvider->getModels() as $key => $value): ?>
-
 <div class="panel panel-default">
   <div class="panel-body">
     <table style="width: 100%;">
       <tr>
-        <td style="vertical-align: middle; width : 95%;">
-          <?php echo $value['restoran']->value ?>
+        <td><?= Html::img('@web/images/img.png', ['alt'=>'some', 'class'=>'thing', 'style' => 'max-width: 20px; border: none; background: none;']);?></td>
+        <td style="vertical-align: middle; width : 90%;">
+          <strong style="font-size: 30px;"><?php echo $value['restoran']->value ?></strong>
           <br>
           <?php echo $value['restoran']->alamat ?>
         </td>
         <td style="vertical-align: middle; width: 5%;">
           <!-- <div class="btn-group-vertical"> -->
-              <?php echo  Html::a('Lihat', ['create'], ['class'=> 'btn btn-success',
+              <?php echo  Html::a('Lihaat', ['create'], ['class'=> 'btn btn-success',
                 'title' => Yii::t('app', 'lead-create'),
               ]); ?>
               <br><br>
-              <?php echo  Html::a('Status', ['view'], ['class'=> 'btn btn-success',
-                'title' => Yii::t('app', 'lead-delete'),
-              ]);
-
+              <?php
+            //   echo  Html::a('Status',
+            //
+            //   // ['view'], ['class'=> 'btn btn-success',
+            //   //   'title' => Yii::t('app', 'lead-view'),
+            //   //
+            //   // ]
+            //   [
+            //       'attribute' => 'status',
+            //       'format'    => 'raw',
+            //       'filter'    => $searchModel->listStatus(),
+            //       'value'     => function ($model)
+            //       {
+            //           switch ($model->status) {
+            //               case $model::STATUS_DITERIMA:
+            //                   $status = '<span class="label label-success">'.$model::STATUS_DITERIMA.'</span>';
+            //                   break;
+            //
+            //               case $model::STATUS_DITOLAK:
+            //                   $status = '<span class="label label-danger">'.$model::STATUS_DITOLAK.'</span>';
+            //                   break;
+            //
+            //               case $model::STATUS_PENDING:
+            //                   $status = '<span class="label label-warning">'.$model::STATUS_PENDING.'</span>';
+            //                   break;
+            //
+            //               default:
+            //                   $status = '<span class="label label-danger">'.$model::STATUS_DELETED.'</span>';
+            //                   break;
+            //           }
+            //
+            //           return $status;
+            //       },
+            //   ]
+            // );
               ?>
           <!-- </div> -->
         </td>

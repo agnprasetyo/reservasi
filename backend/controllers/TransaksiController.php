@@ -25,7 +25,7 @@ class TransaksiController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'allow' => Yii::$app->assign->is(['administrator']),
+                        'allow' => Yii::$app->assign->isAdministrator(),
                     ],
                 ],
             ],

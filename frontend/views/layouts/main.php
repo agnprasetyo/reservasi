@@ -13,6 +13,7 @@ use common\widgets\Alert;
 AppAsset::register($this);
 $view = Yii::$app->view;
 $view->registerLinkTag(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' => Yii::$app->homeUrl . 'images/favicon.png']);
+$view->registerLinkTag(['rel' => 'apple-touch-icon', 'type' => 'image/png', 'sizes' => '194x194', 'href' => Yii::$app->homeUrl . 'images/favicon.png']);
 
 ?>
 <?php $this->beginPage() ?>
@@ -39,11 +40,11 @@ $view->registerLinkTag(['rel' => 'shortcut icon', 'type' => 'image/png', 'href' 
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Home', 'url' => ['/site/index'], 'visible' => Yii::$app->user->isGuest],
         // ['label' => 'About', 'url' => ['/site/about']],
         // ['label' => 'Contact', 'url' => ['/site/contact']],
         // ['label' => 'Restoran', 'url' => ['/transaksi/list']],
-        ['label' => 'Penjual', 'url' => ['/penjual']],
+        // ['label' => 'Penjual', 'url' => ['/penjual']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

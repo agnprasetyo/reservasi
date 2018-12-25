@@ -73,11 +73,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if (Yii::$app->assign->isBoth()) {
+        // if (Yii::$app->assign->isBoth()) {
+        //
+        //     return $this->redirect(['/transaksi/index']);
+        // }
+        //
+        // return $this->render('index');
 
-            return $this->redirect(['/transaksi/index']);
+        if (Yii::$app->assign->isPenjual()) {
+            return $this->redirect(['/penjual/index']);
         }
-
+        elseif (Yii::$app->assign->isPembeli()) {
+              return $this->redirect(['/transaksi/index']);
+        }
         return $this->render('index');
     }
 

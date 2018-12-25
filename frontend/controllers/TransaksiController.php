@@ -8,6 +8,7 @@ use frontend\models\TransaksiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * TransaksiController implements the CRUD actions for Transaksi model.
@@ -20,6 +21,14 @@ class TransaksiController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => Yii::$app->assign->isPembeli(),
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -44,6 +53,19 @@ class TransaksiController extends Controller
         ]);
     }
 
+    public function actionApprove($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->approve == $model::STATUS_NOT_APPROVED) {
+          $model->approve = $model::STATUS_APPROVED;
+        } else {
+          $model->approve = $model::STATUS_NOT_APPROVED;
+        }
+
+        return $this->redirect(['index']);
+    }
+
     /**
      * Displays a single Transaksi model.
      * @param integer $id
@@ -59,6 +81,20 @@ class TransaksiController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    /**
+    *
+    */
+    public function actionReservasiSaya()
+    {
+      $searchModel = new TransaksiSearch();
+      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+      return $this->render('reservasi-saya', [
+          'searchModel' => $searchModel,
+          'dataProvider' => $dataProvider,
+      ]);
     }
 
     /**

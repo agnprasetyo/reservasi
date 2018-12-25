@@ -15,13 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
     </p>
 
     <?= DetailView::widget([
@@ -33,13 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'id_user',
                 'value' => function ($model) {
                   return $model['user']->username;
-                },
-            ],
-            [
-                'class'=>'\kartik\grid\DataColumn',
-                'attribute'=>'id_restoran',
-                'value' => function ($model) {
-                  return $model['restoran']->value;
                 },
             ],
             [

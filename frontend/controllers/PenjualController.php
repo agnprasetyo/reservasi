@@ -8,6 +8,10 @@ use frontend\models\TransaksiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+
+use common\models\LoginForm;
+
 
 /**
  * TransaksiController implements the CRUD actions for Transaksi model.
@@ -20,6 +24,14 @@ class PenjualController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => Yii::$app->assign->isPenjual(),
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -42,6 +54,38 @@ class PenjualController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionDaftarReservasi()
+    {
+        $searchModel = new TransaksiSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('daftar-reservasi', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionUbahProfil()
+    {
+        if (!Yii::$app->assign->isPenjual()) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+            Yii::$app->assign->setAssign();
+
+            return $this->goBack();
+        } else {
+            $model->password = '';
+
+            return $this->render('ubah-profil', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**

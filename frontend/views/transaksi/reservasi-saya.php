@@ -7,16 +7,11 @@ use kartik\grid\GridView;
 /* @var $searchModel backend\models\TransaksiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Transaksis';
+$this->title = 'Reservasi Saya';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="transaksi-index">
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Transaksi', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <h2>Daftar Reservasi Saya</h2>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
