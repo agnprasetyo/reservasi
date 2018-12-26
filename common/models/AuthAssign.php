@@ -17,6 +17,10 @@ use Yii;
  */
 class AuthAssign extends \yii\db\ActiveRecord
 {
+    const ADMINISTRATOR = 'administrator';
+    const PENJUAL      = 'penjual';
+    const PEMBELI      = 'pembeli';
+
     /**
      * {@inheritdoc}
      */

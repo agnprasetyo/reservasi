@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Transaksi */
@@ -12,15 +13,29 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php // $form->field($model, 'id_user')->textInput()  ->otomatis?>
+    <?= $form->field($model, 'id_user')->textInput()?>
+
+    <?php // $form->field($model, 'id_restoran')->textInput(['value' => $modelRestoran->id, 'disabled' => true, 'readOnly' => true]) ?>
 
     <?= $form->field($model, 'nama')->textInput() ?>
 
     <?= $form->field($model, 'jumlah_reservasi')->textInput() ?>
 
-    <?= $form->field($model, 'id_restoran')->textInput() ?>
+    <?= $form->field($model, 'date')->widget(DateTimePicker::classname(), [
+        // 'options' => ['placeholder' => date('Y-m-d')],
+        // 'pluginOptions' => [
+        //     'autoclose' => true,
+        //     'format'    => 'yyyy-mm-dd',
+        // ],
 
-    <?= $form->field($model, 'date')->textInput() ?>
+        'options' => ['placeholder' => 'Select operating time ...'],
+        'convertFormat' => true,
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd H:i',
+            'startDate' => '01-Mar-2014 12:00 AM',
+            'todayHighlight' => true
+        ],
+    ])?>
 
     <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
 

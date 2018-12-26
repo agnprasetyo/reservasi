@@ -170,9 +170,19 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
+
+                // Add Hak Akses Pembeli
+                Yii::$app->assign->addAssign(\common\models\AuthAssign::PEMBELI, $user->id);
+                Yii::$app->assign->addAssign(\common\models\AuthAssign::PENJUAL, $user->id);
+
+                Yii::$app->session->setFlash('success', 'Berhasil daftar, silakan login.');
+
+                return $this->redirect(['login']);
+
+                // if (Yii::$app->getUser()->login($user)) {
+
+                    // return $this->goHome();
+                // }
             }
         }
 

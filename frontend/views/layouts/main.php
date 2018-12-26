@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use common\models\AuthAssign;
 
 AppAsset::register($this);
 $view = Yii::$app->view;
@@ -45,6 +46,26 @@ $view->registerLinkTag(['rel' => 'apple-touch-icon', 'type' => 'image/png', 'siz
         // ['label' => 'Contact', 'url' => ['/site/contact']],
         // ['label' => 'Restoran', 'url' => ['/transaksi/list']],
         // ['label' => 'Penjual', 'url' => ['/penjual']],
+
+        [
+            'label' => 'Hak Akses',
+            'url'   => '#',
+            'visible' => Yii::$app->assign->isBoth(),
+            'items' => [
+                [
+                    'label' => AuthAssign::PENJUAL,
+                    'url' => ['/user/set-assign', 'assign' => AuthAssign::PENJUAL],
+                    'visible' => Yii::$app->assign->hasAssign(AuthAssign::PENJUAL),
+                    'active' => Yii::$app->assign->isPenjual(),
+                ],
+                [
+                    'label' => AuthAssign::PEMBELI,
+                    'url' => ['/user/set-assign', 'assign' => AuthAssign::PEMBELI],
+                    'visible' => Yii::$app->assign->hasAssign(AuthAssign::PEMBELI),
+                    'active' => Yii::$app->assign->isPembeli(),
+                ],
+            ],
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

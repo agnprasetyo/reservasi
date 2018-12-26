@@ -38,9 +38,16 @@ class TransaksiSearch extends Transaksi
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $id_user = null)
     {
-        $query = Transaksi::find();
+        $query = Transaksi::find()
+        ->joinWith('restoran')
+        ->groupBy('id_restoran')
+        ->orderBy('restoran.value ASC');
+
+        if ($id_user) {
+            $query->where(['transaksi.id_user' => $id_user]);
+        }
 
         // add conditions that should always apply here
 

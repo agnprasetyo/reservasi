@@ -37,7 +37,7 @@ class Assign extends Component
      */
     public function isAdministrator()
     {
-        return $this->getAssign() == 'administrator';
+        return $this->getAssign() == AuthAssign::ADMINISTRATOR;
     }
 
     /**
@@ -45,7 +45,7 @@ class Assign extends Component
      */
     public function isPenjual()
     {
-        return $this->getAssign() == 'penjual';
+        return $this->getAssign() == AuthAssign::PENJUAL;
     }
 
     /**
@@ -53,7 +53,7 @@ class Assign extends Component
      */
     public function isPembeli()
     {
-        return $this->getAssign() == 'pembeli';
+        return $this->getAssign() == AuthAssign::PEMBELI;
     }
 
     /**

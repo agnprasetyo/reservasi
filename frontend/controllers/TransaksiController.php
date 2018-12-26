@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\Transaksi;
+use common\models\Restoran;
 use frontend\models\TransaksiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -89,7 +90,7 @@ class TransaksiController extends Controller
     public function actionReservasiSaya()
     {
       $searchModel = new TransaksiSearch();
-      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+      $dataProvider = $searchModel->search(Yii::$app->request->queryParams, Yii::$app->user->id);
 
       return $this->render('reservasi-saya', [
           'searchModel' => $searchModel,
@@ -102,17 +103,33 @@ class TransaksiController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($restoran)
     {
         $model = new Transaksi();
+        if (($modelRestoran = Restoran::findOne($restoran)) === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->id_restoran = $restoran;
+            $model->id;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'modelRestoran' => $modelRestoran,
         ]);
+
+        // $model = Transaksi::find()
+        //        ->joinWith(['restoran'])
+        //        ->where(['transaksi.id' => $id])
+        //        ->one();
+        // return $this->render('view', [
+        //     'model' => $this->findModel($id),
+        // ]);
     }
 
     /**

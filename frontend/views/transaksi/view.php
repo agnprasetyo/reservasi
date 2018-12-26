@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Transaksi */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Transaksis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Reservasi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -17,10 +17,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Bayar', ['bayar', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Apakah data sudah benar?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,18 +30,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             // 'id',
-            'id_user',
-            [
-                'class'=>'\kartik\grid\DataColumn',
-                'attribute'=>'id_user',
-                'value' => function ($model) {
-                  return $model['user']->username;
-                },
-            ],
+            // 'id_user',
+            // [
+            //     'class'=>'\kartik\grid\DataColumn',
+            // ],
+            //     'attribute'=>'id_user',
+            //     'value' => function ($model) {
+            //       return $model['user']->username;
+            //     },
 
             [
                 'class'=>'\kartik\grid\DataColumn',
+                'attribute'=>'nama',
+            ],
+            [
+                'class'=>'\kartik\grid\DataColumn',
                 'attribute'=>'id_restoran',
+                'value' => function ($model) {
+                  return $model['restoran']->value;
+                },
             ],
             [
                 'class'=>'\kartik\grid\DataColumn',

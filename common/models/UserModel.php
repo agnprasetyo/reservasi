@@ -44,12 +44,12 @@ class UserModel extends \yii\db\ActiveRecord
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['email'], 'email'],
-            [['password_hash'], function ($attribute, $params, $validator)
-            {
-                if ($this->isNewRecord) {
-                    return $this->addError($attribute, 'Password tidak boleh kosong.');
-                }
-            }],
+            // [['password_hash'], function ($attribute, $params, $validator)
+            // {
+            //     if ($this->isNewRecord) {
+            //         return $this->addError($attribute, 'Password tidak boleh kosong.');
+            //     }
+            // }],
         ];
     }
 

@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <table style="width: 100%;">
       <tr>
         <td><?= Html::img('@web/images/img.png', ['alt'=>'some', 'class'=>'thing', 'style' => 'max-width: 20px; border: none; background: none;']);?></td>
+
         <td style="vertical-align: middle; width : 90%;">
           <strong style="font-size: 30px;"><?php echo $value['restoran']->value ?></strong>
           <br>
@@ -33,11 +34,16 @@ $this->params['breadcrumbs'][] = $this->title;
         </td>
         <td style="vertical-align: middle; width: 5%;">
           <!-- <div class="btn-group-vertical"> -->
-              <?php echo  Html::a('Lihaat', ['create'], ['class'=> 'btn btn-success',
+              <?php echo  Html::a('Lihaat', ['create', 'restoran' => $value['restoran']->id], ['class'=> 'btn btn-success',
                 'title' => Yii::t('app', 'lead-create'),
               ]); ?>
               <br><br>
               <?php
+              echo  Html::a('Status', ['view'], ['class'=> 'btn btn-primary',
+                'title' => Yii::t('app', 'lead-view'),
+              ]);
+
+
             //   echo  Html::a('Status',
             //
             //   // ['view'], ['class'=> 'btn btn-success',
